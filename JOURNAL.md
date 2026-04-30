@@ -71,3 +71,11 @@ Base Nuxt 4 + Quasar 2 + UnoCSS + NFZ 6.5.26 + Pinia avec :
 - Ajout des scripts racine `docs:clean:win` et `docs:reinstall:win` pour nettoyer/réinstaller uniquement le sous-projet VitePress.
 - Procédure recommandée : `bun run docs:clean:win`, `bun run docs:reinstall:win`, puis `bun run docs:build`.
 
+
+## 0.1.7 — GitHub Pages Actions source
+
+- Diagnostic : `vitepress preview` local OK, mais GitHub Pages affichait une page Markdown/Jekyll brute.
+- Cause probable : dépôt configuré en `Deploy from a branch` au lieu de `GitHub Actions`.
+- Correction workflow : ajout de `actions/configure-pages@v5`, `DOCS_BASE`, installation `--optional`, publication de `docs/.vitepress/dist`.
+- Ajout de `docs/public/.nojekyll`.
+- Mise à jour de `docs/guide/github-pages.md`, `PROMPT_CONTEXT.md` et ajout du patchlog dédié.

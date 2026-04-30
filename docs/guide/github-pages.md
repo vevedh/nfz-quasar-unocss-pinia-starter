@@ -1,46 +1,80 @@
 # Publication GitHub Pages
 
-Le starter contient un workflow GitHub Actions prêt à publier cette documentation VitePress + UnoCSS sur GitHub Pages.
+Le starter publie la documentation VitePress avec GitHub Actions.
 
-## Workflow inclus
+## Point critique
+
+Le site local peut être correct avec :
+
+```bash
+bun run docs:build
+bun run docs:preview
+```
+
+mais GitHub Pages peut afficher une page Markdown/Jekyll brute si le dépôt est configuré en mode :
+
+```txt
+Deploy from a branch
+```
+
+Pour ce starter, il faut utiliser le mode :
+
+```txt
+Settings → Pages → Build and deployment → Source → GitHub Actions
+```
+
+## Workflow officiel
+
+Le workflow est situé ici :
 
 ```txt
 .github/workflows/docs.yml
 ```
 
-Le workflow :
+Il doit construire VitePress puis publier uniquement :
 
-1. installe Bun ;
-2. installe les dépendances ;
-3. construit la documentation avec `bun run docs:build` ;
-4. publie `docs/.vitepress/dist` sur GitHub Pages.
+```txt
+docs/.vitepress/dist
+```
 
-## Configuration GitHub
+## Commandes locales
 
-Dans le dépôt GitHub :
+```bash
+bun run docs:build
+bun run docs:preview
+```
 
-1. ouvre **Settings** ;
-2. va dans **Pages** ;
-3. choisis **Source: GitHub Actions** ;
-4. pousse sur `main`.
+Sur Windows, en cas de cache ou dépendances corrompues :
+
+```powershell
+bun run docs:clean:win
+bun run docs:reinstall:win
+bun run docs:build
+```
 
 ## Base VitePress
 
-La base est calculée automatiquement à partir du nom du dépôt GitHub :
+La base est calculée automatiquement dans `docs/.vitepress/config.mts` à partir de `GITHUB_REPOSITORY`, avec une valeur par défaut :
 
-```ts
-const repoName = process.env.GITHUB_REPOSITORY?.split('/').at(1)
-const defaultBase = repoName ? `/${repoName}/` : '/nfz-quasar-unocss-pinia-starter/'
+```txt
+/nfz-quasar-unocss-pinia-starter/
 ```
 
-Tu peux la surcharger :
+Le workflow définit aussi explicitement :
 
-```bash
-DOCS_BASE=/mon-repo/ bun run docs:build
+```txt
+DOCS_BASE=/nfz-quasar-unocss-pinia-starter/
 ```
 
-## Liens NFZ 6.5.29
+pour éviter toute ambiguïté en CI.
 
-- npm : <https://www.npmjs.com/package/nuxt-feathers-zod>
-- GitHub : <https://github.com/vevedh/nuxt-feathers-zod>
-- Docs GitHub Pages : <https://vevedh.github.io/nuxt-feathers-zod/>
+## Checklist de publication
+
+1. Pousser le code sur `main`.
+2. Aller dans `Settings → Pages`.
+3. Choisir `Source: GitHub Actions`.
+4. Aller dans `Actions`.
+5. Lancer ou relancer `Deploy VitePress Docs`.
+6. Vérifier que le déploiement utilise l’artefact `docs/.vitepress/dist`.
+
+Si la page publiée affiche le Markdown brut ou ne contient pas le header VitePress, c’est presque toujours que GitHub Pages publie encore depuis une branche au lieu du workflow Actions.

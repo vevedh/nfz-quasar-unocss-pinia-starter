@@ -1,0 +1,5 @@
+[install]
+concurrentScripts = 1
+optional = true
+dev = true
+peer = true

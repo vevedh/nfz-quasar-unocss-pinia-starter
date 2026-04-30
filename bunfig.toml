@@ -1,0 +1,12 @@
+# Bun install hardening for this Nuxt/NFZ starter.
+#
+# Nuxt/Vite/VitePress dependency trees use esbuild platform binaries.
+# On Windows, Bun can occasionally run lifecycle scripts concurrently before
+# the esbuild platform binary is fully available, which may produce:
+# Error: Expected "0.27.7" but got "".
+
+[install]
+concurrentScripts = 1
+optional = true
+dev = true
+peer = true

@@ -12,14 +12,18 @@ export interface UserParams extends MongoDBAdapterParams<UserQuery> {}
 export class UserService<ServiceParams extends Params = UserParams> extends MongoDBService<
   User,
   UserData,
-  UserParams,
+  ServiceParams,
   UserPatch
 > {}
 
-export function getOptions(app: Application): MongoDBAdapterOptions {
-  const mongoClient = app.get('mongodbClient') as Promise<Db> | undefined
+interface MongoRuntimeApplication {
+  get: (name: 'mongodbClient') => Promise<Db> | undefined
+}
 
-  if (!mongoClient || typeof (mongoClient as any).then !== 'function') {
+export function getOptions(app: Application): MongoDBAdapterOptions {
+  const mongoClient = (app as unknown as MongoRuntimeApplication).get('mongodbClient')
+
+  if (!mongoClient || typeof mongoClient.then !== 'function') {
     throw new Error(
       '[nfz-starter] Service users utilise MongoDB mais app.get(\'mongodbClient\') est indisponible. '
       + 'Vérifie feathers.database.mongo.url et démarre MongoDB avec bun run db:up.',

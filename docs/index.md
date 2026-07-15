@@ -3,7 +3,7 @@ layout: home
 hero:
   name: NFZ Quasar UnoCSS Pinia Starter
   text: Créer une application Nuxt 4 authentifiée avec Feathers/NFZ
-  tagline: Un modèle pédagogique, animé et prêt à lancer avec Quasar 2, UnoCSS, Pinia, MongoDB et nuxt-feathers-zod 6.5.29.
+  tagline: Un modèle pédagogique, animé et prêt à lancer avec Quasar 2, UnoCSS, Pinia, MongoDB et nuxt-feathers-zod 6.5.49.
   actions:
     - theme: brand
       text: Démarrer le guide
@@ -32,7 +32,7 @@ features:
 
   <div class="relative grid gap-8 md:grid-cols-[1.15fr_0.85fr] md:items-center">
     <section>
-      <p class="nfz-chip mb-4">Template principal NFZ 6.5.29</p>
+      <p class="nfz-chip mb-4">Template principal NFZ 6.5.49</p>
       <h2 class="m-0 text-3xl font-900 tracking-tight text-slate-950 md:text-5xl dark:text-white">
         Une base claire pour apprendre, livrer et industrialiser.
       </h2>
@@ -68,7 +68,7 @@ features:
   </div>
 </div>
 
-## Liens utiles NFZ 6.5.29
+## Liens utiles NFZ 6.5.49
 
 <div class="grid gap-4 md:grid-cols-3">
   <a class="nfz-link-card" href="https://www.npmjs.com/package/nuxt-feathers-zod" target="_blank">

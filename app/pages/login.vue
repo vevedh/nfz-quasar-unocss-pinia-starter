@@ -99,7 +99,7 @@ const runtimeConfig = useRuntimeConfig()
 
             <div class="flex items-center justify-between text-sm">
               <QCheckbox v-model="auth.form.remember" dense label="Session locale" />
-              <span class="nfz-muted">admin / admin123</span>
+              <span class="nfz-muted">admin / admin123 · développement</span>
             </div>
 
             <QBtn

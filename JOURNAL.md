@@ -79,3 +79,16 @@ Base Nuxt 4 + Quasar 2 + UnoCSS + NFZ 6.5.26 + Pinia avec :
 - Correction workflow : ajout de `actions/configure-pages@v5`, `DOCS_BASE`, installation `--optional`, publication de `docs/.vitepress/dist`.
 - Ajout de `docs/public/.nojekyll`.
 - Mise à jour de `docs/guide/github-pages.md`, `PROMPT_CONTEXT.md` et ajout du patchlog dédié.
+
+## 0.1.8 — nuxt-feathers-zod 6.5.49 compatibility
+
+- Mise à jour ciblée de `nuxt-feathers-zod` de `6.5.29` vers `6.5.49`.
+- Baseline de gestionnaire de paquets alignée sur `bun@1.3.6`.
+- Convergence des dépendances Feathers directes sur `5.0.46`, ajout explicite de `@feathersjs/feathers` et override de `@feathersjs/errors` pour éviter un sous-graphe de types 5.0.44.
+- Conservation des versions applicatives déjà résolues pour Nuxt, Vue, Quasar, UnoCSS et Pinia ainsi que des correctifs VitePress, GitHub Pages et `esbuild@0.27.4`.
+- Port du durcissement du seed de démonstration : désactivation implicite en production, activation explicite via `NFZ_DEMO_ENABLED`, refus des mots de passe faibles en production et suppression des identifiants des logs.
+- Renforcement du typage de `useAdminFeathers()`, de `params.user` et de l'accès `mongodbClient` sans assouplir TypeScript strict.
+- Ajout d'un correctif fail-closed réservé aux deux templates générés incompatibles avec TypeScript strict dans NFZ 6.5.49.
+- Ajout de `check:nfz-compat` pour verrouiller NFZ 6.5.49, Bun 1.3.6, Feathers 5.0.46, le nouvel adaptateur Nitro et les règles de sécurité du seed.
+- Validations réussies : garde NFZ, parsing du lock Bun, typecheck strict, lint ciblé des fichiers du patch, build Nuxt/Nitro et build VitePress.
+- Le lint global conserve une dette antérieure hors périmètre : 95 problèmes sur la baseline contre 73 après le patch.

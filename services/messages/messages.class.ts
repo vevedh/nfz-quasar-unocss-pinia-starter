@@ -7,19 +7,29 @@ import { MongoDBService } from '@feathersjs/mongodb'
 
 export type { Message, MessageData, MessagePatch, MessageQuery }
 
-export interface MessageParams extends MongoDBAdapterParams<MessageQuery> {}
+export interface MessageParams extends MongoDBAdapterParams<MessageQuery> {
+  user?: {
+    userId?: string
+    id?: string | number
+    _id?: string | number
+  }
+}
 
 export class MessageService<ServiceParams extends Params = MessageParams> extends MongoDBService<
   Message,
   MessageData,
-  MessageParams,
+  ServiceParams,
   MessagePatch
 > {}
 
-export function getOptions(app: Application): MongoDBAdapterOptions {
-  const mongoClient = app.get('mongodbClient') as Promise<Db> | undefined
+interface MongoRuntimeApplication {
+  get: (name: 'mongodbClient') => Promise<Db> | undefined
+}
 
-  if (!mongoClient || typeof (mongoClient as any).then !== 'function') {
+export function getOptions(app: Application): MongoDBAdapterOptions {
+  const mongoClient = (app as unknown as MongoRuntimeApplication).get('mongodbClient')
+
+  if (!mongoClient || typeof mongoClient.then !== 'function') {
     throw new Error(
       '[nfz-starter] Service messages utilise MongoDB mais app.get(\'mongodbClient\') est indisponible. '
       + 'Vérifie feathers.database.mongo.url et démarre MongoDB avec bun run db:up.',

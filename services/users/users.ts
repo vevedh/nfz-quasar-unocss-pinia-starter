@@ -1,6 +1,7 @@
 import type { Application } from 'nuxt-feathers-zod/server'
 import { authenticate } from '@feathersjs/authentication'
 import { hooks as schemaHooks } from '@feathersjs/schema'
+import { getOptions, UserService } from './users.class'
 import {
   userDataResolver,
   userDataValidator,
@@ -11,7 +12,6 @@ import {
   userQueryValidator,
   userResolver,
 } from './users.schema'
-import { getOptions, UserService } from './users.class'
 import { userMethods, userPath } from './users.shared'
 
 export * from './users.class'

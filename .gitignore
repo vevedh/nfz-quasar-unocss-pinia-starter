@@ -13,3 +13,6 @@ bun.lockb
 /PATCH_0_1_6_DOCS_ESBUILD_0_27_4.md
 /PATCH_0_1_7_GITHUB_PAGES_ACTIONS_SOURCE.md
 /PROMPT_CONTEXT.md
+patch-memory/
+/AGENTS.md
+/.env

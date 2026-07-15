@@ -1,6 +1,7 @@
+import type { ClientApplication } from 'nuxt-feathers-zod/client'
 import type { EntityId, MessageRecord, ServiceListResult, StudioUser } from '~/types/auth'
 import { Forbidden } from '@feathersjs/errors'
-import { getFeathersErrorDebug, getErrorMessage } from '~/utils/errors'
+import { getErrorMessage, getFeathersErrorDebug } from '~/utils/errors'
 
 interface FeathersCallParams {
   query?: Record<string, unknown>
@@ -36,8 +37,8 @@ export function useAdminFeathers() {
   const nuxtApp = useNuxtApp()
   const session = useStudioSessionStore()
 
-  function api() {
-    const client = nuxtApp.$api
+  function api(): ClientApplication {
+    const client = nuxtApp.$api as ClientApplication | undefined
     if (!client)
       throw new Error('Client Feathers NFZ indisponible.')
     return client

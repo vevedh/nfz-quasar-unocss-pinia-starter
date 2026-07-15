@@ -1,3 +1,4 @@
+import process from 'node:process'
 import { defineNuxtConfig } from 'nuxt/config'
 
 export default defineNuxtConfig({
@@ -129,6 +130,7 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     demo: {
+      enabled: process.env.NFZ_DEMO_ENABLED,
       user: process.env.NFZ_DEMO_USER || 'admin',
       password: process.env.NFZ_DEMO_PASSWORD || 'admin123',
       roles: process.env.NFZ_DEMO_ROLES || 'admin,user',

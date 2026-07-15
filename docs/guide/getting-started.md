@@ -1,8 +1,10 @@
 # Démarrage rapide
 
-Ce guide crée une application **Nuxt 4 + Quasar 2 + UnoCSS + Pinia + NFZ 6.5.29** avec MongoDB et un compte administrateur seedé automatiquement.
+Ce guide crée une application **Nuxt 4 + Quasar 2 + UnoCSS + Pinia + NFZ 6.5.49** avec MongoDB et un compte administrateur de démonstration seedé hors production.
 
 ## 1. Installer les dépendances
+
+Utilise **Bun 1.3.6 ou supérieur** pour rester aligné avec NFZ 6.5.49.
 
 ```bash
 bun install
@@ -18,6 +20,7 @@ Le fichier `.env.example` contient une configuration MongoDB locale prête pour 
 
 ```env
 MONGODB_URL=mongodb://root:changeMe@127.0.0.1:27037/nfz_starter?authSource=admin
+NFZ_DEMO_ENABLED=true
 NFZ_DEMO_USER=admin
 NFZ_DEMO_PASSWORD=admin123
 NFZ_DEMO_ROLES=admin,user
@@ -48,7 +51,7 @@ bun run dev:db
 Compte créé au démarrage par le module de seed Feathers :
 
 ```txt
-admin / admin123
+admin / admin123 (développement uniquement)
 ```
 
 ## 6. Pages disponibles

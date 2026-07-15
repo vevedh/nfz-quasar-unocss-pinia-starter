@@ -1,6 +1,6 @@
 # NFZ Quasar UnoCSS Pinia Starter
 
-Starter **Nuxt 4 + Quasar 2 + UnoCSS + Pinia + nuxt-feathers-zod 6.5.29** avec MongoDB local prêt à l’emploi.
+Starter **Nuxt 4 + Quasar 2 + UnoCSS + Pinia + nuxt-feathers-zod 6.5.49** avec MongoDB local prêt à l’emploi.
 
 Il fournit :
 
@@ -20,6 +20,8 @@ Il fournit :
 
 ## Démarrage rapide
 
+Prérequis : **Bun 1.3.6 ou supérieur**.
+
 ```bash
 bun install
 cp .env.example .env
@@ -36,7 +38,7 @@ bun run dev:db
 Compte seedé au démarrage :
 
 ```txt
-admin / admin123
+admin / admin123 (développement uniquement)
 ```
 
 MongoDB local :
@@ -53,25 +55,25 @@ bun run db:logs    # affiche les logs MongoDB
 bun run db:down    # arrête MongoDB
 ```
 
-## Dépendance NFZ 6.5.29
+## Dépendance NFZ 6.5.49
 
 Le `package.json` cible :
 
 ```json
-"nuxt-feathers-zod": "6.5.29"
+"nuxt-feathers-zod": "6.5.49"
 ```
 
-Si la version 6.5.29 n’est pas encore publiée sur npm, utilise ton tarball local :
+Pour valider un tarball local de la même version avant publication ou en environnement isolé :
 
 ```bash
-# depuis le dépôt nuxt-feathers-zod 6.5.29
+# depuis le dépôt nuxt-feathers-zod 6.5.49
 bun install
 bun run build
 npm pack
 
 # dans ce starter
 bun remove nuxt-feathers-zod
-bun add ../nuxt-feathers-zod/nuxt-feathers-zod-6.5.29.tgz
+bun add ../nuxt-feathers-zod/nuxt-feathers-zod-6.5.49.tgz
 ```
 
 ## Documentation VitePress + UnoCSS
@@ -93,7 +95,7 @@ La documentation présente :
 - MongoDB et le seed admin ;
 - la publication GitHub Pages via `.github/workflows/docs.yml`.
 
-Liens NFZ 6.5.29 :
+Liens NFZ 6.5.49 :
 
 - npm : <https://www.npmjs.com/package/nuxt-feathers-zod>
 - GitHub : <https://github.com/vevedh/nuxt-feathers-zod>

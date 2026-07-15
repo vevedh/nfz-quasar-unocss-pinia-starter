@@ -44,7 +44,7 @@ Le module `server/feathers/modules/seed-users.ts` est exécuté en phase `post`,
 Il crée :
 
 - un index unique sur `users.userId` ;
-- un compte `admin / admin123` ;
+- un compte de démonstration `admin / admin123` hors production ;
 - les rôles `admin,user` ;
 - un premier message de démonstration.
 

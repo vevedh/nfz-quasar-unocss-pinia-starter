@@ -44,11 +44,7 @@ export type MessageData = z.infer<typeof messageDataSchema>
 export const messageDataValidator = getZodValidator(messageDataSchema, { kind: 'data' })
 export const messageDataResolver = resolve<Message, HookContext<MessageService>>({
   userId: async (_value, _message, context) => {
-    const user = context.params.user as {
-      userId?: string
-      id?: string | number
-      _id?: string | number
-    } | undefined
+    const user = context.params.user
 
     return user?.userId ?? String(user?.id ?? user?._id ?? 'system')
   },

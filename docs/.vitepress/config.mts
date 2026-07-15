@@ -62,7 +62,7 @@ export default defineConfig({
       { text: 'Auth + RBAC', link: '/guide/auth-session-rbac' },
       { text: 'MongoDB + Seed', link: '/guide/mongodb-seed' },
       {
-        text: 'NFZ 6.5.29',
+        text: 'NFZ 6.5.49',
         items: [
           { text: 'npm', link: 'https://www.npmjs.com/package/nuxt-feathers-zod' },
           { text: 'GitHub', link: 'https://github.com/vevedh/nuxt-feathers-zod' },
@@ -93,7 +93,7 @@ export default defineConfig({
       },
     ],
     footer: {
-      message: 'Starter pédagogique pour Nuxt 4, Quasar 2, UnoCSS, Pinia et nuxt-feathers-zod 6.5.29.',
+      message: 'Starter pédagogique pour Nuxt 4, Quasar 2, UnoCSS, Pinia et nuxt-feathers-zod 6.5.49.',
       copyright: 'MIT — NFZ Starter',
     },
   },
